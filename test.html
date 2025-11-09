@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Autofill CSS Styling Control</title>
+        <link rel="stylesheet" href="css.css" />
+    </head>
+    <body>
+        <main>
+            <form action="" class="unstyled">
+                <label for="in1">Default autofill</label>
+                <div class="with-message">
+                    <input
+                        id="in1"
+                        type="text"
+                        placeholder="first name"
+                        aria-label="first name"
+                        title="first name"
+                        name="fname"
+                    />
+                    <span
+                        >if you don't see any autofill suggestion, then fill one
+                        of the inputs at least once and submit to see it in the
+                        second attempt</span
+                    >
+                </div>
+                <button type="submit">submit</button>
+            </form>
+            <form action="" class="issue">
+                <label for="in2">With issue</label>
+                <input
+                    id="in2"
+                    type="text"
+                    placeholder="first name"
+                    aria-label="first name"
+                    title="first name"
+                    name="fname"
+                />
+                <button type="submit">submit</button>
+            </form>
+            <form action="" class="transition-fix">
+                <label for="in3"
+                    >Transition delay fix (zoom to max and focus on the
+                    corners)</label
+                >
+                <input
+                    id="in3"
+                    type="text"
+                    placeholder="first name"
+                    aria-label="first name"
+                    title="first name"
+                    name="fname"
+                />
+                <button type="submit">submit</button>
+            </form>
+            <form action="" class="ongoing-fix">
+                <label for="in3"
+                    >The best possible way to fix it but not the best
+                    result</label
+                >
+                <input
+                    id="in3"
+                    type="text"
+                    placeholder="first name"
+                    aria-label="first name"
+                    title="first name"
+                    name="fname"
+                />
+                <button type="submit">submit</button>
+            </form>
+        </main>
+    </body>
+</html>

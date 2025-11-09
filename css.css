@@ -1,0 +1,177 @@
+:root {
+    /* change the colors as you please but beware that you might hide the issue with some colors */
+    --body-clr: black;
+    --label-clr: cadetblue;
+    --bg-clr: blueviolet;
+    --text-clr: aquamarine;
+
+    /* min-width */
+    --min-w: 15rem; /* 15 * 16 px */
+
+    /* padding */
+    --padding-h: 12px;
+    --padding-v: 6px;
+
+    /* border radius */
+    --rounded: 12px;
+}
+
+body {
+    background-color: var(--body-clr);
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    max-width: calc(var(--min-w) + var(--padding-h) * 2 + 3px * 2);
+}
+
+.with-message span {
+    color: brown;
+    display: inline-block;
+    margin-top: 3px;
+    font-size: xx-small;
+    text-align: left;
+    font-weight: 900;
+    margin-left: 7px;
+}
+
+form:first-child {
+    gap: 0.1rem;
+}
+
+form:first-child label {
+    margin-bottom: 1.4rem;
+}
+
+button {
+    background-color: var(--bg-clr);
+    color: var(--text-clr);
+    border-radius: var(--rounded);
+    border: none;
+    cursor: pointer;
+    padding: var(--padding-v) var(--padding-h);
+    font-weight: 700;
+}
+
+button:hover {
+    opacity: 0.8;
+    scale: 1.1;
+    transition: scale 100ms ease-in-out, opacity 100ms ease-in-out;
+}
+
+label {
+    color: var(--label-clr);
+    text-wrap: wrap;
+    /* margin-inline: auto; */
+}
+
+input,
+textarea,
+select {
+    /* removing all default styles */
+    all: unset;
+
+    /* making my own styles */
+    color: var(--text-clr);
+    background-color: var(--bg-clr);
+    border-radius: var(--rounded);
+    /* padding-inline: 12px;
+    padding-block: 6px; */
+    padding: var(--padding-v) var(--padding-h);
+    min-width: var(--min-w);
+    text-align: left;
+    border: 3px solid var(--bg-clr); /* added just to make the corners issue clear */
+
+    /* uncomment the following if you want to differenciate the border from background */
+    /* border-color: blue; */
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+    /* placeholder color */
+    color: var(--text-clr);
+}
+
+.issue :-webkit-autofill {
+    /* just for cursor color after autofilling */
+    caret-color: var(--text-clr);
+
+    /* for transparent bg, but don't use it for solid color bg like this example*/
+    /* -webkit-background-clip: text; */
+
+    /* a 100% working solution but I didn't like the idea of relying on transition delay if used, then no need for -webkit-background-clip: padding-box;*/
+    /* transition: background-color 5000s ease-in-out 0s; */
+
+    /* a suggested solution that I didn't in my browser (it's supposed to go along with -webkit-background-clip: padding-box;) */
+    /* background-clip: padding-box; */
+
+    /* it covers the browser default applied bg, set it to 5000px in spread just to make sure it always cover no matter what how big is the textarea or input, if you are unfamiliar with inset, it makes the box-shadow inside the element */
+    -webkit-box-shadow: 0 0 0 5000px var(--bg-clr) inset;
+
+    /* the text color when auto-filling */
+    -webkit-text-fill-color: var(--text-clr);
+
+    /* this is what fix the issue that happens when box-shadow inset meets border radius, a gap appears as a result of anti-aliasing artifact by the browser itself, it's visible in the color I chose in brave browser "v1.84.132 (Oct 29, 2025)" atleast, BUT IT'S NOT BRAVE ONLY ISSUE, it HAS BEEN HERE FOR YEARS */
+    /* this almost hide it, if you zoom and focus so hard you can still see like 0.1 px of it */
+    /* -webkit-background-clip: padding-box; */
+}
+
+.ongoing-fix :-webkit-autofill {
+    /* just for cursor color after autofilling */
+    caret-color: var(--text-clr);
+
+    /* for transparent bg, but don't use it for solid color bg like this example*/
+    /* -webkit-background-clip: text; */
+
+    /* a 100% working solution but I didn't like the idea of relying on transition delay if used, then no need for -webkit-background-clip: padding-box;*/
+    /* transition: background-color 5000s ease-in-out 0s; */
+
+    /* a suggested solution that I didn't in my browser (it's supposed to go along with -webkit-background-clip: padding-box;) */
+    /* background-clip: padding-box; */
+
+    /* it covers the browser default applied bg, set it to 5000px in spread just to make sure it always cover no matter what how big is the textarea or input, if you are unfamiliar with inset, it makes the box-shadow inside the element */
+    -webkit-box-shadow: 0 0 0 5000px var(--bg-clr) inset;
+
+    /* the text color when auto-filling */
+    -webkit-text-fill-color: var(--text-clr);
+
+    /* this is what fix the issue that happens when box-shadow inset meets border radius, a gap appears as a result of anti-aliasing artifact by the browser itself, it's visible in the color I chose in brave browser "v1.84.132 (Oct 29, 2025)" atleast, BUT IT'S NOT BRAVE ONLY ISSUE, it HAS BEEN HERE FOR YEARS */
+    /* this almost hide it, if you zoom and focus so hard you can still see like 0.1 px of it */
+    -webkit-background-clip: padding-box;
+}
+
+.transition-fix :-webkit-autofill {
+    /* just for cursor color after autofilling */
+    caret-color: var(--text-clr);
+
+    /* for transparent bg, but don't use it for solid color bg like this example*/
+    /* -webkit-background-clip: text; */
+
+    /* a 100% working solution but I didn't like the idea of relying on transition delay if used, then no need for -webkit-background-clip: padding-box;*/
+    transition: background-color 5000s ease-in-out 0s;
+
+    /* a suggested solution that I didn't in my browser (it's supposed to go along with -webkit-background-clip: padding-box;) */
+    /* background-clip: padding-box; */
+
+    /* it covers the browser default applied bg, set it to 5000px in spread just to make sure it always cover no matter what how big is the textarea or input, if you are unfamiliar with inset, it makes the box-shadow inside the element */
+    -webkit-box-shadow: 0 0 0 5000px var(--bg-clr) inset;
+
+    /* the text color when auto-filling */
+    -webkit-text-fill-color: var(--text-clr);
+
+    /* this is what fix the issue that happens when box-shadow inset meets border radius, a gap appears as a result of anti-aliasing artifact by the browser itself, it's visible in the color I chose in brave browser "v1.84.132 (Oct 29, 2025)" atleast, BUT IT'S NOT BRAVE ONLY ISSUE, it HAS BEEN HERE FOR YEARS */
+    /* this almost hide it, if you zoom and focus so hard you can still see like 0.1 px of it */
+    /* -webkit-background-clip: padding-box; */
+}
